@@ -32,11 +32,11 @@ module apb4_clint (
   logic s_wr_valid, s_msip_wr_valid;
   logic s_mtimecmpl_wr_valid, s_mtimecmph_wr_valid, s_mtimecmp_wr_valid;
 
-  assign s_wr_valid = (apb4.psel && apb4.penable) && apb4.pwrite;
-  assign s_msip_wr_valid = s_wr_valid && (s_apb_addr == `CLINT_MSIP);
+  assign s_wr_valid           = (apb4.psel && apb4.penable) && apb4.pwrite;
+  assign s_msip_wr_valid      = s_wr_valid && (s_apb_addr == `CLINT_MSIP);
   assign s_mtimecmpl_wr_valid = s_wr_valid && (s_apb_addr == `CLINT_MTIMECMPL);
   assign s_mtimecmph_wr_valid = s_wr_valid && (s_apb_addr == `CLINT_MTIMECMPH);
-  assign s_mtimecmp_wr_valid = s_mtimecmpl_wr_valid || s_mtimecmph_wr_valid;
+  assign s_mtimecmp_wr_valid  = s_mtimecmpl_wr_valid || s_mtimecmph_wr_valid;
 
   edge_det u_edge_det (
       .clk_i  (apb4.hclk),
@@ -82,7 +82,7 @@ module apb4_clint (
       .dat_o  (s_mtimecmp_q)
   );
 
-  assign tmr_irq_o   = s_mtimecmp_q > s_mtime_q;
+  assign tmr_irq_o   = s_mtime_q >= s_mtimecmp_q;
   assign sfr_irq_o   = s_msip_q[0] == 1'b1;
 
   assign apb4.pready = 1'b1;
