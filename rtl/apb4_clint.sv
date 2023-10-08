@@ -74,7 +74,7 @@ module apb4_clint (
       .dat_o  (s_mtime_q)
   );
 
-  dfflr #(64) u_mtimecmp_dfflr (
+  dfflrh #(64) u_mtimecmp_dfflrh (
       .clk_i  (apb4.hclk),
       .rst_n_i(apb4.hresetn),
       .en_i   (s_mtimecmp_wr_valid),
