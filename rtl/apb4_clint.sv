@@ -18,11 +18,11 @@
 
 module apb4_clint (
     // verilog_format: off
-    apb4_if      apb4,
+    apb4_if.slave apb4,
     // verilog_format: on
-    input  logic rtc_clk_i,
-    output logic tmr_irq_o,
-    output logic sfr_irq_o
+    input  logic  rtc_clk_i,
+    output logic  tmr_irq_o,
+    output logic  sfr_irq_o
 );
 
   logic [ 3:0] s_apb_addr;
