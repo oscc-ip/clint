@@ -14,7 +14,7 @@
 module apb4_clint_tb ();
   localparam CLK_PEROID = 10;
   // localparam LOW_CLK_PEROID = 30518; // 32768Hz
-  localparam LOW_CLK_PEROID = 22; // sim
+  localparam LOW_CLK_PEROID = 50; // sim
   logic rst_n_i, clk_i, low_clk_i;
 
   initial begin

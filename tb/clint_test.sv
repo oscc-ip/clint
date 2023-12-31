@@ -57,9 +57,21 @@ endtask
 
 task automatic ClintTest::test_irq(input bit [31:0] run_times = 1000);
   super.test_irq();
-  this.write(`CLINT_MTIMEH_ADDR, 32'b0);
-  this.write(`CLINT_MTIMECMPL_ADDR, 32'h2050);
+  $display("test timer irq");
   repeat (200) @(posedge this.apb4.pclk);
-  this.write(`CLINT_MTIMECMPL_ADDR, 32'h2200);
+  this.write(`CLINT_MSIP_ADDR, 32'b0 & {`CLINT_MSIP_WIDTH{1'b1}});
+  this.write(`CLINT_MTIMECMPL_ADDR, 32'hEFF);
+  this.write(`CLINT_MTIMECMPH_ADDR, 32'h0);
+  @(this.clint.tmr_irq_o);
+  $display("%t tmr_irq_o: %d", $time, this.clint.tmr_irq_o);
+  this.write(`CLINT_MTIMECMPL_ADDR, 32'h10FF);
+  @(this.clint.tmr_irq_o);
+  $display("%t tmr_irq_o: %d", $time, this.clint.tmr_irq_o);
+
+  $display("test software irq");
+  this.write(`CLINT_MSIP_ADDR, 32'b1 & {`CLINT_MSIP_WIDTH{1'b1}});
+  wait(this.clint.sfr_irq_o);
+  $display("%t sfr_irq_o: %d", $time, this.clint.sfr_irq_o);
+
 endtask
 `endif
