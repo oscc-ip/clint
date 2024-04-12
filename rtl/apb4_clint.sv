@@ -41,7 +41,7 @@ module apb4_clint (
   );
 
   assign s_msip_en = s_apb4_wr_hdshk && s_apb4_addr == `CLINT_MSIP;
-  assign s_msip_d  = s_msip_en ? apb4.pwdata[`CLINT_MSIP_WIDTH-1:0] : s_msip_q;
+  assign s_msip_d  = apb4.pwdata[`CLINT_MSIP_WIDTH-1:0];
   dffer #(`CLINT_MSIP_WIDTH) u_msip_dffer (
       apb4.pclk,
       apb4.presetn,
@@ -51,7 +51,7 @@ module apb4_clint (
   );
 
   assign s_mtime_en = s_rtc_rise_edge;
-  assign s_mtime_d  = s_mtime_en ? s_mtime_q + 1'b1 : s_mtime_q;
+  assign s_mtime_d  = s_mtime_q + 1'b1;
   dffer #(`CLINT_MTIME_WIDTH) u_mtime_dffer (
       apb4.pclk,
       apb4.presetn,
@@ -71,7 +71,6 @@ module apb4_clint (
       endcase
     end
   end
-
   dfferh #(`CLINT_MTIMECMP_WIDTH) u_mtimecmp_dfferh (
       apb4.pclk,
       apb4.presetn,

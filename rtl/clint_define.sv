@@ -14,10 +14,10 @@
 /* register mapping
  * CLINT_MSIP:
  * BITS:   | 31:1  | 0    |
- * FIELDS: | RES   | msip |
+ * FIELDS: | RES   | MSIP |
  * PERMS:  | NONE  | RW   |
  * ------------------------
- * CLINT_MTMEL:
+ * CLINT_MTIMEL:
  * BITS:   | 31:0   |
  * FIELDS: | MTIMEL |
  * PERMS:  | RW     |
