@@ -35,7 +35,7 @@ The `clint(core-local interruptor)` IP is a fully parameterised soft IP implemen
 
 reset value: `0x0000_0000`
 
-* MSIP: This bit is reflected in MSIP of the `mip` CSR. A machine-level software interrupt for a HART is
+* MSIP: this bit is reflected in MSIP of the `mip` CSR. A machine-level software interrupt for a HART is
  pending or cleared by writing 1 or 0 respectively to the corresponding this MSIP bit
 
 #### Machine Timer Low
