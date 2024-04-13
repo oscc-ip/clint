@@ -20,12 +20,12 @@
  * CLINT_MTIMEL:
  * BITS:   | 31:0   |
  * FIELDS: | MTIMEL |
- * PERMS:  | RW     |
+ * PERMS:  | R      |
  * ------------------------
  * CLINT_MTIMEH:
  * BITS:   | 31:0   |
  * FIELDS: | MTIMEH |
- * PERMS:  | RW     |
+ * PERMS:  | R      |
  * ------------------------
  * CLINT_MTIMECMPL:
  * BITS:   | 31:0      |
