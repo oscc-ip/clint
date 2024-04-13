@@ -41,7 +41,7 @@ reset value: `0x0000_0000`
 #### Machine Timer Low
 | bit | access  | description |
 |:---:|:-------:| :---------: |
-| `[31:0]` | R | MTIMEL |
+| `[31:0]` | RO | MTIMEL |
 
 reset value: `0x0000_0000`
 
@@ -50,7 +50,7 @@ reset value: `0x0000_0000`
 #### Machine Timer High
 | bit | access  | description |
 |:---:|:-------:| :---------: |
-| `[31:0]` | R | MTIMEH |
+| `[31:0]` | RO | MTIMEH |
 
 reset value: `0x0000_0000`
 
