@@ -102,6 +102,7 @@ clint.MSIP = 0 // clear the software interrupt
 ... // some codes
 
 ```
+complete driver and test codes in [driver](../driver/) dir.
 
 ### Resoureces
 ### References
